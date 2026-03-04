@@ -2,24 +2,40 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  let personName = ['Asad','Robin','Abrity', 'Saima','Shammi'];
+  let personAge = ['23','27','20', '19','22'];
+  let personGender = ['male','male','female', 'female','female'];
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Person name={personName[0]} age={personAge[0]} gender={personGender[0]}></Person>
+        <Person name={personName[1]} age={personAge[1]} gender={personGender[1]}></Person>
+        <Person name={personName[2]} age={personAge[2]} gender={personGender[1]}></Person>
+        <Person name={personName[3]} age={personAge[3]} gender={personGender[1]}></Person>
+        <Person name={personName[4]} age={personAge[4]} gender={personGender[1]}></Person>
       </header>
     </div>
   );
+}
+
+
+function Person(props)
+{
+  let personStyle = {
+    border: '2px solid red',
+    backgroundColor: '#fff',
+    color: '#000',
+    padding: '20px',
+    margin: '10px'
+  }
+  return (
+    <div style={personStyle}>
+      <h3>Name: {props.name}</h3>
+      <h3>Age: {props.age}</h3>
+      <h3>Gender: {props.gender}</h3>
+    </div>
+  )
 }
 
 export default App;
