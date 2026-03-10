@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
 
@@ -30,6 +31,11 @@ function App() {
         <Person name={personName[2]} age={personAge[2]} gender={personGender[1]}></Person>
         <Person name={personName[3]} age={personAge[3]} gender={personGender[1]}></Person>
         <Person name={personName[4]} age={personAge[4]} gender={personGender[1]}></Person>
+
+
+
+
+        <Counter></Counter>
       </header>
     </div>
   );
@@ -50,6 +56,18 @@ function Person(props)
       <h3>Name: {props.name}</h3>
       <h3>Age: {props.age}</h3>
       <h3>Gender: {props.gender}</h3>
+    </div>
+  )
+}
+
+// component state hook and state method
+function Counter(){
+  const [count, setCount] = useState(10);
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
     </div>
   )
 }
