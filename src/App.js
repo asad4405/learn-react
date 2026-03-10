@@ -6,9 +6,25 @@ function App() {
   let personName = ['Asad','Robin','Abrity', 'Saima','Shammi'];
   let personAge = ['23','27','20', '19','22'];
   let personGender = ['male','male','female', 'female','female'];
+
+  let products = [
+    {name:"Photoshop", price: "105$"},
+    {name:"Illastator", price: '88$'},
+    {name: "Pdf Reader", price: '8.9$'},
+  ]
   return (
     <div className="App">
       <header className="App-header">
+        <ul>
+          <h3>Product List</h3>
+          {
+            products.map(product => <li>{product.name} {product.price}</li>)
+          }
+        </ul>
+
+
+
+
         <Person name={personName[0]} age={personAge[0]} gender={personGender[0]}></Person>
         <Person name={personName[1]} age={personAge[1]} gender={personGender[1]}></Person>
         <Person name={personName[2]} age={personAge[2]} gender={personGender[1]}></Person>
