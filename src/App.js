@@ -84,8 +84,14 @@ function Counter() {
       <h2>Count: {count}</h2>
       <button onClick={() => setCount(count - 1)}>Decrease</button>
       <button onClick={() => setCount(count + 1)}>Increase</button>
+      <MemberDisplay memberCount={count}></MemberDisplay>
+      <MemberDisplay memberCount={count + 10}></MemberDisplay>
     </div>
   );
+}
+
+function MemberDisplay(props){
+  return  <h3>Total Member Count: {props.memberCount}</h3>
 }
 
 // load dynamic data and api call useEffect integrate state
