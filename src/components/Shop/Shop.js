@@ -5,6 +5,10 @@ import Product from '../Product/Product';
 const Shop = () => {
     const [products, setProducts] = useState([]);
 
+    const handleAddProduct = (product) => {
+        console.log('Product Added',product);
+    }
+
     useEffect(() => {
         fetch('https://next.babuei.com/api/flash-sale')
         .then((res) => res.json())
@@ -13,7 +17,7 @@ const Shop = () => {
     return (
         <div className="shop-container">
             <div className="product-container">
-                {products.map(pd => <Product product={pd}></Product>)}
+                {products.map(pd => <Product product={pd} handleAddProduct={handleAddProduct}></Product>)}
             </div>
             <div className="cart-container">
                 dddddddddd
