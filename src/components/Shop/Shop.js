@@ -4,9 +4,11 @@ import Product from '../Product/Product';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
     const handleAddProduct = (product) => {
-        console.log('Product Added',product);
+        const newCart = [...cart, product];
+        setCart(newCart);
     }
 
     useEffect(() => {
@@ -20,7 +22,8 @@ const Shop = () => {
                 {products.map(pd => <Product product={pd} handleAddProduct={handleAddProduct}></Product>)}
             </div>
             <div className="cart-container">
-                dddddddddd
+                <h3>This is Cart</h3>
+                <h5>Order Summary: {cart.length}</h5>
             </div>
             
         </div>
