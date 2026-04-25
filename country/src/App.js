@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Country from "./components/Country/Country";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -19,15 +20,20 @@ function App() {
 
   return (
     <div className="App">
-      <h3>Total Country: {countries.length}</h3>
-      <h3>Cart Added Country: {cart.length}</h3>
-      {countries.map((country) => (
-        <Country
-          country={country}
-          key={country.name.common}
-          handleAddCountry={handleAddCountry}
-        ></Country>
-      ))}
+      <div className="country-container">
+        <div className="country">
+          {countries.map((country) => (
+            <Country
+              country={country}
+              key={country.name.common}
+              handleAddCountry={handleAddCountry}
+            ></Country>
+          ))}
+        </div>
+        <div className="cart">
+          <Cart countries={countries} cart={cart}></Cart>
+        </div>
+      </div>
     </div>
   );
 }
