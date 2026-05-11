@@ -1,13 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import {Button} from "react-bootstrap";
+import Header from "./components/Header/Header";
+import Homepage from "./components/Home/Homepage";
 
 function App() {
   return (
     <div className="App">
-      <div className="container mt-5">
-        <h1 className="text-danger">Hello React Bootstrap</h1>
-        <Button variant="primary">Click Me {process.env.REACT_APP_BASE_URL}</Button>
-      </div>
+      <Header></Header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
