@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { Navbar, Nav, Container, NavDropdown, Row, Col, Button } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
 
 const Header = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(apiUrl + "/menu-categories")
+      .then((res) => res.json())
+      .then((data) => setCategories(data.data));
+  }, []);
+
   return (
     <>
-      {/* Top Navbar */}
+      {/* ============= Top Navbar ========== */}
+
       <Navbar expand="lg" bg="dark" variant="dark" className="py-2">
         <Container>
-          <Navbar.Brand href="#">MyShop</Navbar.Brand>
+          <Navbar.Brand href="/">My Shop</Navbar.Brand>
 
           <Navbar.Toggle aria-controls="main-navbar" />
 
           <Navbar.Collapse id="main-navbar">
             <Nav className="ms-auto align-items-lg-center">
-              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#">Shop</Nav.Link>
               <Nav.Link href="#">About</Nav.Link>
               <Nav.Link href="#">Contact</Nav.Link>
@@ -34,23 +50,18 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      {/* Category Bar */}
+      {/* ================ Category Bar ============ */}
       <div style={{ background: "#f8f9fa", borderBottom: "1px solid #ddd" }}>
         <Container>
           <Nav className="py-2 justify-content-center">
-            <Nav.Link href="#">Electronics</Nav.Link>
-            <Nav.Link href="#">Fashion</Nav.Link>
-            <Nav.Link href="#">Home & Living</Nav.Link>
-            <Nav.Link href="#">Beauty</Nav.Link>
-            <Nav.Link href="#">Sports</Nav.Link>
-            <Nav.Link href="#">Grocery</Nav.Link>
+            {categories.map((category) => (
+              <Nav.Link href="#" key={category.id} className="text-dark">{category.category_name}</Nav.Link>
+            ))}
           </Nav>
         </Container>
       </div>
-
-      
     </>
-    )
-}
+  );
+};
 
 export default Header;
