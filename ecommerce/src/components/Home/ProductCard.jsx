@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Carousel, Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const ProductCard = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const imageUrl = process.env.REACT_APP_IMAGE_URL;
+  const navigate = useNavigate();
 
   const [categoryProducts, setCategoryProducts] = useState([]);
   useEffect(() => {
@@ -45,7 +47,7 @@ const ProductCard = () => {
                         <span className="new-price">৳{product.new_price}</span>
                       </div>
 
-                      <Button className="add-btn">+ Order Now</Button>
+                      <Button className="add-btn" onClick={() => navigate("/product-details/"+product.slug)}>+ Order Now</Button>
                     </Card.Body>
                   </Card>
                 </Col>
